@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	ul{
+		list-style: none;
+	}
+	#container{
+		width: 400px;
+		height: 300px;
+		background: #FFB6C1;
+		margin: 200px auto;
+	}
+	#tab{
+		border-bottom: 1px solid #FFF0F5;
+		height: 30px;
+	}
+	#tab li{
+		width: 120px;
+		height: 30px;
+		background: #D8BFD8;
+		float: left;
+		margin-right: 2px;
+		text-align: center;
+		line-height: 30px;
+		cursor: pointer;
+		}
+		#tab .first{
+			background:#D8BFD8;
+			color: #FF00FF;
+		}
+		#content{
+			clear: both;
+		}
+		#content div{
+			width: 400px;
+			height: 270px;
+			display: none;
+		}
+
+		#content .selected{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+<div id="container">
+	<ul id="tab">
+		<li class='first'>html</li>
+		<li>css</li>
+		<li>javascript</li>
+	</ul>
+	<ul id="content">
+		<div class='selected'>111</div>
+		<div>222</div>
+		<div>333</div>
+	</ul>
+</div>
+<script src='jquery-1.12.4.min.js'></script>
+<script>
+	$(function(){
+		$('#tab li').on('click',function(){
+				$(this).addClass('first').siblings().removeClass('first');
+			var index = $(this).index();
+		$('#content div:eq('+ index +')').addClass('selected').siblings().removeClass('selected');
+		});
+
+});
+	</script>
+</body>
+</html>
